@@ -1,0 +1,32 @@
+server:
+  port: 8401
+  
+spring:
+  application:
+    name: sentinel-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    sentinel:
+      datasource:
+        ds:
+          nacos:
+            server-addr: 127.0.0.1:8848
+            dataId: ${spring.application.name}
+            groupId: DEFAULT_GROUP
+            data-type: json
+            rule-type: flow #定义存储的规则类型
+     
+      transport:
+        dashboard:  127.0.0.1:8080
+        port: 8719
+
+            
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+          
+  
